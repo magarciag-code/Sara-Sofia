@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Panel de Control - Aplicativo Sara Sofia</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Comic Sans MS', cursive;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+        }
+        
+        h1 {
+            color: #f5576c;
+            text-align: center;
+            margin-bottom: 10px;
+            font-size: 3em;
+        }
+        
+        .subtitle {
+            text-align: center;
+            color: #666;
+            font-size: 1.2em;
+            margin-bottom: 40px;
+        }
+        
+        .sections {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin: 40px 0;
+        }
+        
+        .card {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 30px;
+            border-radius: 15px;
+            text-align: center;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.2);
+        }
+        
+        .card-icon {
+            font-size: 80px;
+            margin-bottom: 20px;
+        }
+        
+        .card h2 {
+            font-size: 1.5em;
+            margin-bottom: 10px;
+        }
+        
+        .card p {
+            font-size: 0.95em;
+            opacity: 0.9;
+            margin-bottom: 20px;
+        }
+        
+        .card a {
+            display: inline-block;
+            background: white;
+            color: #667eea;
+            padding: 12px 25px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+        
+        .card a:hover {
+            background: #f5576c;
+            color: white;
+            transform: scale(1.05);
+        }
+        
+        .info-section {
+            background: #f0f0f0;
+            border-radius: 15px;
+            padding: 30px;
+            margin: 40px 0;
+        }
+        
+        .info-section h3 {
+            color: #f5576c;
+            margin-bottom: 20px;
+            font-size: 1.5em;
+        }
+        
+        .feature-list {
+            list-style: none;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 15px;
+        }
+        
+        .feature-list li {
+            background: white;
+            padding: 15px;
+            border-radius: 10px;
+            border-left: 4px solid #f5576c;
+        }
+        
+        .feature-list li:before {
+            content: "✅ ";
+            color: #4caf50;
+            font-weight: bold;
+            margin-right: 10px;
+        }
+        
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 20px;
+            margin: 30px 0;
+        }
+        
+        .stat-box {
+            background: linear-gradient(135deg, #FFB6C1 0%, #FF69B4 100%);
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+        }
+        
+        .stat-number {
+            font-size: 2.5em;
+            font-weight: bold;
+        }
+        
+        .stat-label {
+            font-size: 0.9em;
+            opacity: 0.9;
+            margin-top: 10px;
+        }
+        
+        .footer {
+            text-align: center;
+            margin-top: 50px;
+            padding-top: 30px;
+            border-top: 2px solid #ddd;
+            color: #666;
+        }
+        
+        .btn-group {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin: 30px 0;
+        }
+        
+        .btn {
+            padding: 15px 30px;
+            font-size: 1.1em;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-primary {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+        
+        .btn-primary:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+        }
+        
+        .btn-secondary {
+            background: #f5576c;
+            color: white;
+        }
+        
+        .btn-secondary:hover {
+            background: #e63f52;
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🌟 La Aventura de Sara Sofia 🌟</h1>
+        <p class="subtitle">Aplicativo Web Interactivo para Niños</p>
+        
+        <!-- Tarjetas principales -->
+        <div class="sections">
+            <div class="card">
+                <div class="card-icon">🎮</div>
+                <h2>Jugar Ahora</h2>
+                <p>Accede a 4 juegos divertidos y educativos</p>
+                <a href="index.html">JUGAR</a>
+            </div>
+            
+            <div class="card">
+                <div class="card-icon">📚</div>
+                <h2>Leer Historia</h2>
+                <p>Disfruta la aventura mágica en 4 capítulos</p>
+                <a href="index.html">LEER</a>
+            </div>
+            
+            <div class="card">
+                <div class="card-icon">🎨</div>
+                <h2>Generador</h2>
+                <p>Crea imágenes para el aplicativo</p>
+                <a href="generator.html">GENERAR</a>
+            </div>
+        </div>
+        
+        <!-- Estadísticas -->
+        <div class="info-section">
+            <h3>📊 Estadísticas del Aplicativo</h3>
+            <div class="stats">
+                <div class="stat-box">
+                    <div class="stat-number">4</div>
+                    <div class="stat-label">Juegos Interactivos</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-number">4</div>
+                    <div class="stat-label">Capítulos de Historia</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-number">10</div>
+                    <div class="stat-label">Preguntas Educativas</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-number">100%</div>
+                    <div class="stat-label">Seguro para Niños</div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Características -->
+        <div class="info-section">
+            <h3>✨ Características Principales</h3>
+            <ul class="feature-list">
+                <li>🎨 Juego de Pintar y Dibujar</li>
+                <li>🦁 Colorear Animales Hermosos</li>
+                <li>🌀 Desafío del Laberinto</li>
+                <li>❓ Preguntas y Respuestas</li>
+                <li>📖 Historia Mágica en 4 Capítulos</li>
+                <li>🎯 Interfaz Amigable para Niños</li>
+                <li>📱 Funciona en Cualquier Dispositivo</li>
+                <li>🔒 Completamente Seguro</li>
+                <li>💾 Sin Requerimientos de Descarga</li>
+                <li>🌈 Colores Vibrantes y Divertidos</li>
+            </ul>
+        </div>
+        
+        <!-- Juegos -->
+        <div class="info-section">
+            <h3>🎮 Juegos Disponibles</h3>
+            <div class="sections" style="margin-top: 20px;">
+                <div style="background: white; padding: 20px; border-radius: 10px; border-left: 4px solid #FF1493;">
+                    <h4 style="color: #FF1493;">🎨 Pintar y Dibujar</h4>
+                    <p>Dibuja libremente con colores personalizables y pincel ajustable</p>
+                </div>
+                <div style="background: white; padding: 20px; border-radius: 10px; border-left: 4px solid #FFA500;">
+                    <h4 style="color: #FFA500;">🦁 Colorear Animales</h4>
+                    <p>Colorea León, Elefante y Mariposa con tus colores favoritos</p>
+                </div>
+                <div style="background: white; padding: 20px; border-radius: 10px; border-left: 4px solid #228B22;">
+                    <h4 style="color: #228B22;">🌀 Laberinto</h4>
+                    <p>Navega el laberinto usando las flechas del teclado</p>
+                </div>
+                <div style="background: white; padding: 20px; border-radius: 10px; border-left: 4px solid #0066FF;">
+                    <h4 style="color: #0066FF;">❓ Preguntas</h4>
+                    <p>Responde 10 preguntas educativas y obtén tu puntuación</p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Botones de Acción -->
+        <div class="btn-group">
+            <a href="index.html" class="btn btn-primary">🚀 ABRIR APLICATIVO</a>
+            <a href="README.md" class="btn btn-secondary" style="text-decoration: none; display: inline-block;">📖 LEER DOCUMENTACIÓN</a>
+        </div>
+        
+        <!-- Footer -->
+        <div class="footer">
+            <p>✨ Creado especialmente para <strong>Sara Sofia Lizarazo Garzon</strong> ✨</p>
+            <p style="margin-top: 10px; font-size: 0.9em;">
+                Con ❤️ para que disfrutes de aventura, diversión y aprendizaje
+            </p>
+            <p style="margin-top: 20px; color: #999; font-size: 0.85em;">
+                © 2026 Todos los derechos reservados
+            </p>
+        </div>
+    </div>
+</body>
+</html>

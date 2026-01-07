@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Generador de Imágenes - Iniciando...</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+        .container {
+            background: white;
+            padding: 40px;
+            border-radius: 20px;
+            text-align: center;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.3);
+            max-width: 600px;
+        }
+        h1 {
+            color: #f5576c;
+            margin-bottom: 10px;
+        }
+        p {
+            color: #666;
+            font-size: 1.1em;
+            margin: 15px 0;
+        }
+        .spinner {
+            border: 4px solid #f3f3f3;
+            border-top: 4px solid #667eea;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            animation: spin 1s linear infinite;
+            margin: 30px auto;
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        .progress {
+            background: #f0f0f0;
+            border-radius: 10px;
+            height: 20px;
+            margin: 20px 0;
+            overflow: hidden;
+        }
+        .progress-bar {
+            background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
+            height: 100%;
+            width: 0%;
+            transition: width 0.3s ease;
+        }
+        button {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            font-size: 1.1em;
+            border-radius: 10px;
+            cursor: pointer;
+            margin: 10px;
+            font-weight: bold;
+        }
+        button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🎨 Generando Imágenes 🎨</h1>
+        <p>Espera un momento mientras preparamos tu aplicativo...</p>
+        
+        <div class="spinner"></div>
+        
+        <div class="progress">
+            <div class="progress-bar" id="progressBar"></div>
+        </div>
+        
+        <p id="status">Inicializando...</p>
+        
+        <button onclick="generateImages()">Generar Imágenes Ahora</button>
+        <button onclick="skipAndGo()">Continuar sin Imágenes</button>
+    </div>
+
+    <script>
+        const imageNames = [
+            'welcome.png',
+            'adventure.png',
+            'portal.png',
+            'enchanted-kingdom.png',
+            'treasure.png',
+            'home-return.png',
+            'paint-game.png',
+            'coloring-game.png',
+            'maze-game.png',
+            'quiz-game.png'
+        ];
+
+        function updateProgress(current, total) {
+            const percentage = (current / total) * 100;
+            document.getElementById('progressBar').style.width = percentage + '%';
+            document.getElementById('status').textContent = `Generando ${current}/${total}: ${imageNames[current-1]}`;
+        }
+
+        function generateImages() {
+            const canvas = document.createElement('canvas');
+            canvas.width = 800;
+            canvas.height = 600;
+            const ctx = canvas.getContext('2d');
+            
+            const images = [
+                { name: 'welcome.png', func: drawWelcome },
+                { name: 'adventure.png', func: drawAdventure },
+                { name: 'portal.png', func: drawPortal },
+                { name: 'enchanted-kingdom.png', func: drawEnchanted },
+                { name: 'treasure.png', func: drawTreasure },
+                { name: 'home-return.png', func: drawHomeReturn },
+                { name: 'paint-game.png', func: drawPaintGame },
+                { name: 'coloring-game.png', func: drawColoringGame },
+                { name: 'maze-game.png', func: drawMazeGame },
+                { name: 'quiz-game.png', func: drawQuizGame }
+            ];
+
+            let current = 0;
+
+            function generateNext() {
+                if (current < images.length) {
+                    ctx.clearRect(0, 0, 800, 600);
+                    images[current].func(ctx);
+                    
+                    canvas.toBlob(function(blob) {
+                        const url = URL.createObjectURL(blob);
+                        const a = document.createElement('a');
+                        a.href = url;
+                        a.download = images[current].name;
+                        a.click();
+                        URL.revokeObjectURL(url);
+                        
+                        current++;
+                        updateProgress(current, images.length);
+                        setTimeout(generateNext, 500);
+                    });
+                } else {
+                    document.getElementById('status').textContent = '✅ ¡Todas las imágenes han sido generadas!';
+                    setTimeout(redirectToApp, 1000);
+                }
+            }
+
+            generateNext();
+        }
+
+        function drawWelcome(ctx) {
+            const gradient = ctx.createLinearGradient(0, 0, 0, 600);
+            gradient.addColorStop(0, '#87CEEB');
+            gradient.addColorStop(1, '#E0F6FF');
+            ctx.fillStyle = gradient;
+            ctx.fillRect(0, 0, 800, 600);
+            
+            ctx.fillStyle = '#FFD700';
+            ctx.beginPath();
+            ctx.arc(700, 80, 40, 0, Math.PI * 2);
+            ctx.fill();
+            
+            ctx.fillStyle = '#90EE90';
+            ctx.fillRect(0, 400, 800, 200);
+            
+            ctx.fillStyle = '#FF69B4';
+            ctx.font = 'bold 70px Arial';
+            ctx.textAlign = 'center';
+            ctx.fillText('¡Bienvenida!', 400, 120);
+        }
+
+        function drawAdventure(ctx) {
+            const gradient = ctx.createLinearGradient(0, 0, 0, 600);
+            gradient.addColorStop(0, '#667eea');
+            gradient.addColorStop(1, '#764ba2');
+            ctx.fillStyle = gradient;
+            ctx.fillRect(0, 0, 800, 600);
+            
+            ctx.fillStyle = '#FFFFFF';
+            ctx.font = 'bold 80px Arial';
+            ctx.textAlign = 'center';
+            ctx.fillText('LA AVENTURA', 400, 100);
+        }
+
+        function drawPortal(ctx) {
+            ctx.fillStyle = '#0a0014';
+            ctx.fillRect(0, 0, 800, 600);
+            
+            ctx.strokeStyle = '#00FF00';
+            ctx.lineWidth = 12;
+            ctx.beginPath();
+            ctx.arc(400, 300, 150, 0, Math.PI * 2);
+            ctx.stroke();
+        }
+
+        function drawEnchanted(ctx) {
+            ctx.fillStyle = '#87CEEB';
+            ctx.fillRect(0, 0, 800, 350);
+            ctx.fillStyle = '#90EE90';
+            ctx.fillRect(0, 350, 800, 250);
+            
+            ctx.fillStyle = '#FFD700';
+            ctx.font = 'bold 50px Arial';
+            ctx.textAlign = 'center';
+            ctx.fillText('🏰 Reino Encantado 🏰', 400, 80);
+        }
+
+        function drawTreasure(ctx) {
+            const gradient = ctx.createLinearGradient(0, 0, 0, 600);
+            gradient.addColorStop(0, '#D2B48C');
+            gradient.addColorStop(1, '#A0826D');
+            ctx.fillStyle = gradient;
+            ctx.fillRect(0, 0, 800, 600);
+            
+            ctx.fillStyle = '#8B4513';
+            ctx.fillRect(200, 250, 400, 150);
+            
+            ctx.fillStyle = '#FFD700';
+            ctx.font = 'bold 80px Arial';
+            ctx.textAlign = 'center';
+            ctx.fillText('💎 TESORO 💎', 400, 100);
+        }
+
+        function drawHomeReturn(ctx) {
+            ctx.fillStyle = '#87CEEB';
+            ctx.fillRect(0, 0, 800, 400);
+            ctx.fillStyle = '#90EE90';
+            ctx.fillRect(0, 400, 800, 200);
+            
+            ctx.fillStyle = '#D2691E';
+            ctx.fillRect(250, 250, 300, 200);
+            ctx.fillStyle = '#8B4513';
+            ctx.beginPath();
+            ctx.moveTo(250, 250);
+            ctx.lineTo(400, 150);
+            ctx.lineTo(550, 250);
+            ctx.fill();
+            
+            ctx.fillStyle = '#FF69B4';
+            ctx.font = 'bold 60px Arial';
+            ctx.textAlign = 'center';
+            ctx.fillText('🏠 Hogar 🏠', 400, 100);
+        }
+
+        function drawPaintGame(ctx) {
+            ctx.fillStyle = '#FFE4E1';
+            ctx.fillRect(0, 0, 800, 600);
+            
+            ctx.fillStyle = '#FF69B4';
+            ctx.font = 'bold 100px Arial';
+            ctx.textAlign = 'center';
+            ctx.fillText('🎨', 400, 150);
+        }
+
+        function drawColoringGame(ctx) {
+            ctx.fillStyle = '#FFE4E1';
+            ctx.fillRect(0, 0, 800, 600);
+            
+            ctx.fillStyle = '#FF69B4';
+            ctx.font = 'bold 45px Arial';
+            ctx.textAlign = 'center';
+            ctx.fillText('🦁 Colorear Animales 🦁', 400, 300);
+        }
+
+        function drawMazeGame(ctx) {
+            ctx.fillStyle = '#FFE4E1';
+            ctx.fillRect(0, 0, 800, 600);
+            
+            ctx.strokeStyle = '#333333';
+            ctx.lineWidth = 4;
+            ctx.strokeRect(100, 100, 600, 350);
+            
+            ctx.fillStyle = '#FF69B4';
+            ctx.font = 'bold 45px Arial';
+            ctx.textAlign = 'center';
+            ctx.fillText('🌀 Laberinto 🌀', 400, 500);
+        }
+
+        function drawQuizGame(ctx) {
+            ctx.fillStyle = '#FFE4E1';
+            ctx.fillRect(0, 0, 800, 600);
+            
+            ctx.fillStyle = '#FF69B4';
+            ctx.font = 'bold 150px Arial';
+            ctx.textAlign = 'center';
+            ctx.fillText('?', 400, 200);
+        }
+
+        function redirectToApp() {
+            window.location.href = 'index.html';
+        }
+
+        function skipAndGo() {
+            window.location.href = 'index.html';
+        }
+
+        // Generar automáticamente al cargar la página
+        window.addEventListener('load', function() {
+            setTimeout(generateImages, 1000);
+        });
+    </script>
+</body>
+</html>

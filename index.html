@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Las Aventuras de Sara Sofia - Un Mundo Mágico</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Encabezado -->
+        <header class="header">
+            <div class="header-content">
+                <div style="display:flex; align-items:center; gap:16px;">
+                    <img id="titleImagePreview" src="" alt="" class="title-image" style="display:none;" />
+                    <h1 class="title">🌟 Las Aventuras de Sara Sofia Lizarazo Garzon 🌟</h1>
+                </div>
+                <p class="subtitle">Un Mundo Mágico de Diversión y Aprendizaje</p>
+
+                <div style="margin-top:12px; display:flex; gap:10px; align-items:center;">
+                    <label for="titleImageInput" style="cursor:pointer;" class="btn-secondary">📷 Cambiar Imagen</label>
+                    <input id="titleImageInput" type="file" accept="image/*" style="display:none;">
+                    <button id="titleImageRemove" class="btn-secondary">🗑️ Quitar Imagen</button>
+                </div>
+            </div>
+        </header>
+
+        <!-- Barra de navegación -->
+        <nav class="navbar">
+            <button class="nav-btn active" data-section="home">🏠 Inicio</button>
+            <button class="nav-btn" data-section="story">📖 Historia</button>
+            <button class="nav-btn" data-section="story2">📚 Historia 2</button>
+            <button class="nav-btn" data-section="create-story">✏️ Crea tu Historia</button>
+            <button class="nav-btn" data-section="games">🎮 Juegos</button>
+        </nav>
+
+        <!-- Sección de Inicio -->
+        <section id="home" class="section active">
+            <div class="welcome-section">
+                <h2>¡Bienvenida Sara Sofia!</h2>
+                <div class="welcome-image">
+                    <img src="Historia/WhatsApp Image 2026-01-07 at 11.06.36 AM (1).jpeg" alt="Sara Sofia" class="welcome-title-img" />
+                </div>
+                <p class="welcome-text">
+                    Hola 👋 Soy Sara Sofia Lizarazo Garzon, y esta es mi página especial donde podrás leer historias increíbles, 
+                    jugar juegos divertidos y aprender cosas nuevas. ¡Espero que disfrutes cada momento!
+                </p>
+                <div class="buttons-container">
+                    <button class="btn-primary" onclick="goToSection('story')">📖 Leer mi Historia</button>
+                    <button class="btn-primary" onclick="goToSection('games')">🎮 Ir a los Juegos</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Sección de Historia 2 -->
+        <section id="story2" class="section">
+            <div class="story-section">
+                <h2>📚 Historia 2: El viaje de Sara Sofía</h2>
+                <div class="story-image" style="font-size: 120px; text-align: center; padding: 30px;">🎈🏙️</div>
+                
+                <div class="story-content">
+                    <div class="story-chapter">
+                        <h3>Escrito por: Sara Sofía</h3>
+                        <p>
+                            En un reino donde los castores construían con madera de luna y los trenes volaban sobre nubes de algodón, vivía una niña llamada Sara Sofía. Su imaginación era tan grande que podía convertir lo cotidiano en aventura.
+Un día, Sara Sofía se encontró a los mandos de un reluciente tren plateado. El velocímetro marcaba 300 kilómetros por hora mientras surcaban un cielo azul profundo, dejando un rastro de estrellas fugaces a su paso.
+                        </p>
+                         <img src="Historia/WhatsApp Image 2026-01-07 at 11.06.37 AM.jpeg" width="200" height="200" alt="Mi imagen"><img src="Historia/WhatsApp Image 2026-01-07 at 11.06.35 AM (1).jpeg" width="200" height="200" alt="Mi imagen">
+                         <img src="Historia/WhatsApp Image 2026-01-07 at 11.06.35 AM.jpeg" width="200" height="200" alt="Mi imagen">
+                    </div>
+
+                    <div class="story-chapter">
+                        <h3>Continua</h3>
+                        <p>
+                            Dejó el tren en una estación de nubes y descendió a la tierra, donde un río de aguas cristalinas cantaba una melodía. Allí se encontró con una niña de cabello rojo llamada Lili, y juntas jugaron a construir castillos de arena mágica en la orilla, riendo mientras las olas de juguete los derribaban.
+De repente, Sara Sofía sintió un impulso inusual. Con una agilidad sorprendente, comenzó a hacer como castor, golpeando un tronco con sus dientes de juego y moviendo los brazos como si estuviera construyendo una presa imaginaria. Lili la miró sorprendida, luego imitó sus movimientos, y pronto ambas actuaban como un equipo de castores ocupados.
+                        </p>
+                        <img src="Historia/WhatsApp Image 2026-01-07 at 11.06.36 AM (2).jpeg" width="200" height="200" alt="Mi imagen">
+                        <img src="Historia/WhatsApp Image 2026-01-07 at 11.06.36 AM (4).jpeg" width="200" height="200" alt="Mi imagen">
+                    </div>
+
+                    <div class="story-chapter">
+                        <h3>Tomas</h3>
+                        <p>
+                            Cerca de allí, un misterioso gato negro con ojos color esmeralda observaba su juego. Sara Sofía se acercó a él con cautela, y el gato, en lugar de huir, le dio un suave cabezazo. Jugaron con una bola de hilo encantada, que cambiaba de color con cada maullido del gato.
+La aventura continuó cuando Sara Sofía visitó el jardín real. Allí, en una cuna de flores, encontró a un bebé llamado Luan. El bebé sonrió, y su risa hizo que las flores circundantes florecieran al instante. Sara Sofía le hizo cosquillas, y cada vez que Luan reía, una nueva mariposa de colores brillantes salía volando de la cuna.
+                        </p>
+                        <img src="Historia/WhatsApp Image 2026-01-07 at 11.06.37 AM (1).jpeg" width="200" height="200" alt="Mi imagen">
+                        <img src="Historia/WhatsApp Image 2026-01-07 at 11.06.38 AM (4).jpeg" width="200" height="200" alt="Mi imagen">
+                        <img src="Historia/WhatsApp Image 2026-01-07 at 11.06.38 AM.jpeg" width="200" height="200" alt="Mi imagen">
+                        <img src="Historia/WhatsApp Image 2026-01-07 at 11.06.38 AM (1).jpeg" width="200" height="200" alt="Mi imagen">
+                    </div>
+
+                    <div class="story-chapter">
+                        <h3>Gallina</h3>
+                        <p>
+                            Antes de que terminara el día, una vieja gallina con plumas de arcoíris se cruzó en su camino. A pesar de su apariencia, era muy rápida. Sara Sofía corrió tras ella y, con un movimiento rápido, la cogió suavemente. La gallina cacareó feliz y puso un huevo de chocolate gigante.
+Cansada pero feliz, Sara Sofía supo que su día de fantasía había sido perfecto, y que mañana le esperaban nuevas y emocionantes historias en su reino de imaginación y su disfraz de Luigi.
+                        </p>
+                        <img src="Historia/WhatsApp Image 2026-01-07 at 11.06.38 AM (5).jpeg" width="200" height="200" alt="Mi imagen">
+                        <img src="Historia/WhatsApp Image 2026-01-07 at 11.06.37 AM (2).jpeg" width="200" height="200" alt="Mi imagen">
+                        <img src="Historia/WhatsApp Image 2026-01-07 at 11.06.38 AM (3).jpeg" width="200" height="200" alt="Mi imagen">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Sección de Historia -->
+        <section id="story" class="section">
+            <div class="story-section">
+                <h2>📖 La Gran Aventura de Sara Sofia</h2>
+                <div class="story-image" style="font-size: 120px; text-align: center; padding: 30px;">📚✨</div>
+                
+                <div class="story-content">
+                    <div class="story-chapter">
+                        <h3>Capítulo 1: El Portal Mágico</h3>
+                        <p>
+                            Había una vez una niña muy especial llamada Sara Sofia Lizarazo Garzon, que vivía en un pueblo 
+                            rodeado de montañas verdes y ríos cristalinos. Un día, mientras exploraba su jardín, descubrió 
+                            una puerta brillante escondida entre las flores silvestres. ¡Era un portal mágico!
+                        </p>
+                        <div class="chapter-image" style="font-size: 100px; text-align: center; padding: 20px;">🌌✨🚪</div>
+                    </div>
+
+                    <div class="story-chapter">
+                        <h3>Capítulo 2: El Reino Encantado</h3>
+                        <p>
+                            Al cruzar el portal, Sara Sofia se encontró en un reino mágico lleno de criaturas fantásticas. 
+                            Conoció a Astra, un unicornio de luz dorada, y a Lumina, un hada del bosque. Juntos formaron un 
+                            equipo de aventureros para rescatar el cristal mágico que mantenía la paz en el reino.
+                        </p>
+                        <div class="chapter-image" style="font-size: 100px; text-align: center; padding: 20px;">🏰🦄✨🧚</div>
+                    </div>
+
+                    <div class="story-chapter">
+                        <h3>Capítulo 3: El Tesoro Escondido</h3>
+                        <p>
+                            Después de resolver acertijos antiguos y cruzar montañas nevadas, Sara Sofia y sus amigos 
+                            descubrieron que el verdadero tesoro no era de oro, sino la amistad y el coraje que habían 
+                            encontrado en el camino. Su valor y bondad salvaron el reino encantado para siempre.
+                        </p>
+                        <div class="chapter-image" style="font-size: 100px; text-align: center; padding: 20px;">💎🗺️🏔️🗝️</div>
+                    </div>
+
+                    <div class="story-chapter">
+                        <h3>Capítulo 4: Regreso a Casa</h3>
+                        <p>
+                            Con el cristal mágico restaurado, Sara Sofia regresó a su hogar como una heroína. Pero lo más 
+                            importante fue que aprendió que la verdadera magia está dentro de nosotros: en nuestra imaginación, 
+                            nuestro coraje y nuestra capacidad para ayudar a otros.
+                        </p>
+                        <div class="chapter-image" style="font-size: 100px; text-align: center; padding: 20px;">🏠❤️✨🌟</div>
+                    </div>
+
+                    <div class="story-chapter">
+                        <h3>Capítulo 5: El Jardín Secreto de los Sueños</h3>
+                        <p>
+                            Pasaron los días y Sara Sofia notó que en su jardín crecían flores mágicas que no había visto antes. 
+                            Cada flor brillaba con un color diferente: dorado, plateado, turquesa y rosa. Descubrió que eran 
+                            semillas que el hada Lumina había dejado como regalo. Cuando las tocaba, podía ver los sueños de las 
+                            personas. Sara Sofia decidió crear un jardín secreto donde cualquiera que lo visitara pudiera soñar 
+                            en grande y hacer realidad sus deseos.
+                        </p>
+                        <div class="chapter-image" style="font-size: 100px; text-align: center; padding: 20px;">🌸💫🌈🌺</div>
+                    </div>
+
+                    <div class="story-chapter">
+                        <h3>Capítulo 6: Los Amigos que Volaron</h3>
+                        <p>
+                            Un día especial, Astra y Lumina regresaron volando a través del cielo para visitar a Sara Sofia. 
+                            No venían solos: traían consigo nuevos amigos del reino mágico. Una fénix de fuego rojo, un dragón 
+                            azul de alas suaves, y una sirena terrestre que podía caminar en las nubes. Juntos, los seis amigos 
+                            dieron forma a un pacto: siempre se cuidarían mutuamente y ayudarían a todos los niños del mundo 
+                            a encontrar la magia dentro de sus corazones. Desde ese día, Sara Sofia supo que la verdadera aventura 
+                            nunca termina, siempre hay algo nuevo por descubrir.
+                        </p>
+                        <div class="chapter-image" style="font-size: 100px; text-align: center; padding: 20px;">🐉🔥🦄🧜‍♀️✨👑</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Sección: Crea tu Historia -->
+        <section id="create-story" class="section">
+            <div class="create-story-section">
+                <h2>✏️ Crea tu Historia</h2>
+                <p style="text-align: center; font-size: 1.1em; color: #666; margin-bottom: 20px;">Escribe tu propia historia mágica y guárdala</p>
+                
+                <div class="story-creator">
+                    <!-- Panel de entrada -->
+                    <div class="creator-panel">
+                        <div class="form-group">
+                            <label for="storyTitle" style="font-weight: bold;">Título de tu Historia:</label>
+                            <input id="storyTitle" type="text" placeholder="Ej: El Viaje de Sara" style="width: 100%; padding: 10px; border: 2px solid #667eea; border-radius: 8px; font-size: 16px;">
+                        </div>
+
+                        <div class="form-group">
+                            <label style="font-weight: bold;">Emojis Disponibles (haz clic para agregar):</label>
+                            <div id="emojiPalette" style="display: flex; flex-wrap: wrap; gap: 8px; padding: 12px; background: #f5f5f5; border-radius: 8px;"></div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="storyContent" style="font-weight: bold;">Tu Historia:</label>
+                            <textarea id="storyContent" placeholder="Comienza a escribir tu historia aquí..." style="width: 100%; height: 200px; padding: 12px; border: 2px solid #667eea; border-radius: 8px; font-size: 16px; font-family: 'Arial', sans-serif; resize: vertical;"></textarea>
+                        </div>
+
+                        <div style="display: flex; gap: 10px; justify-content: center;">
+                            <button class="btn-primary" onclick="saveUserStory()">💾 Guardar Historia</button>
+                            <button class="btn-secondary" onclick="clearStoryForm()">🗑️ Limpiar</button>
+                        </div>
+                    </div>
+
+                    <!-- Panel de historias guardadas -->
+                    <div class="creator-panel" style="background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);">
+                        <h3>📚 Mis Historias Guardadas</h3>
+                        <div id="savedStoriesContainer" style="min-height: 250px; padding: 12px; background: white; border-radius: 8px; display: flex; flex-wrap: wrap; gap: 10px; align-items: flex-start;">
+                            <p style="width: 100%; text-align: center; color: #999;">Tus historias guardadas aparecerán aquí como botones</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+                    </div>
+
+                   
+            </div>
+        </section>
+
+        <!-- Sección de Juegos -->
+        <section id="games" class="section">
+            <div class="games-section">
+                <h2>🎮 ¡Hora de Jugar!</h2>
+                <p class="games-intro">Elige un juego para comenzar tu diversión</p>
+                
+                <div class="games-grid">
+                    <!-- Juego 1: Pintar y Dibujar -->
+                    <div class="game-card">
+                        <div class="game-icon" style="font-size: 80px;">🎨</div>
+                        <h3>🎨 Pintar y Dibujar</h3>
+                        <p>Dibuja libremente con diferentes colores y pinceles</p>
+                        <button class="btn-game" onclick="openGame('paint')">¡Jugar!</button>
+                    </div>
+
+                    <!-- Juego 2: Colorear Animales -->
+                    <div class="game-card">
+                        <div class="game-icon" style="font-size: 80px;">🦁</div>
+                        <h3>🦁 Colorear Animales</h3>
+                        <p>Colorea hermosos animales del mundo</p>
+                        <button class="btn-game" onclick="openGame('coloring')">¡Jugar!</button>
+                    </div>
+
+                    <!-- Juego 3: Laberinto -->
+                    <div class="game-card">
+                        <div class="game-icon" style="font-size: 80px;">🌀</div>
+                        <h3>🌀 Juego del Laberinto</h3>
+                        <p>Ayuda a Sara Sofia a salir del laberinto mágico</p>
+                        <button class="btn-game" onclick="openGame('maze')">¡Jugar!</button>
+                    </div>
+
+                    <!-- Juego 4: Preguntas y Respuestas -->
+                    <div class="game-card">
+                        <div class="game-icon" style="font-size: 80px;">❓</div>
+                        <h3>❓ Preguntas y Respuestas</h3>
+                        <p>Prueba tus conocimientos con preguntas divertidas</p>
+                        <button class="btn-game" onclick="openGame('quiz')">¡Jugar!</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Modal para Juego de Pintar -->
+        <div id="paintModal" class="modal">
+            <div class="modal-content">
+                <span class="close" onclick="closeGame('paint')">&times;</span>
+                <h2>🎨 Pintar y Dibujar</h2>
+                <div class="paint-controls">
+                    <div class="control-group">
+                        <label>Color:</label>
+                        <input type="color" id="paintColor" value="#FF0000">
+                    </div>
+                    <div class="control-group">
+                        <label>Tamaño del Pincel:</label>
+                        <input type="range" id="brushSize" min="1" max="50" value="5">
+                    </div>
+                    <button class="btn-secondary" onclick="clearCanvas()">🗑️ Limpiar</button>
+                </div>
+                <canvas id="paintCanvas" width="800" height="600"></canvas>
+            </div>
+        </div>
+
+        <!-- Modal para Juego de Colorear -->
+        <div id="coloringModal" class="modal">
+            <div class="modal-content">
+                <span class="close" onclick="closeGame('coloring')">&times;</span>
+                <h2>🦁 Colorear Animales</h2>
+                
+                <!-- Galería de Animales -->
+                <div class="animals-gallery" id="animalsGallery">
+                    <p style="font-weight: bold; margin-bottom: 15px;">📚 Elige un animal para colorear:</p>
+                    <div class="gallery-grid" id="galleryGrid"></div>
+                </div>
+                
+                <div class="coloring-game" id="coloringGame" style="display: none;">
+                    <div class="coloring-controls">
+                        <div>
+                            <label>Imagen:</label>
+                            <select id="coloringImageSelect" style="padding: 8px 15px; font-size: 16px; border-radius: 5px; border: 2px solid #667eea; cursor: pointer;">
+                                <option value="">-- Selecciona una imagen --</option>
+                            </select>
+                        </div>
+                        <button class="btn-secondary" onclick="resetColoring()">🔄 Reiniciar</button>
+                        <button class="btn-secondary" onclick="downloadColoring()" style="background: #4caf50;">💾 Descargar Imagen</button>
+                        <button class="btn-secondary" onclick="backToGallery()">◀️ Volver a Galería</button>
+                        
+                        <!-- Controles de paleta y pincel -->
+                        <div id="colorPaletteControls" style="display:flex; align-items:center; gap:10px;">
+                            <div id="colorPalette" style="display:flex; gap:8px; align-items:center;">
+                                <!-- Los colores se generarán dinámicamente desde JS -->
+                            </div>
+                            <input type="color" id="colorPicker" title="Elige un color" value="#FF0000" style="width:44px; height:36px; border-radius:6px; border:none; cursor:pointer;">
+                            <label style="font-weight:bold;">Tamaño:</label>
+                            <input type="range" id="brushSizeColoring" min="1" max="60" value="8">
+                        </div>
+                    </div>
+                    <div style="position: relative; display: flex; justify-content: center; align-items: center; min-height: 400px;">
+                        <div id="coloringImageContainer">
+                            <!-- La imagen se cargará aquí dinámicamente -->
+                        </div>
+                    </div>
+                    <p id="coloringTitle" style="text-align: center; font-weight: bold; margin-top: 10px; color: #f5576c;"></p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Modal para Juego del Laberinto -->
+        <div id="mazeModal" class="modal">
+            <div class="modal-content">
+                <span class="close" onclick="closeGame('maze')">&times;</span>
+                <h2>🌀 Juego del Laberinto</h2>
+                <div class="maze-game">
+                    <div class="maze-controls">
+                        <div style="display:flex; gap:10px; align-items:center; flex-wrap:wrap; margin-bottom:8px;">
+                            <p style="margin:0; font-weight:bold;">Usa las FLECHAS del teclado o controles táctiles para mover a Sara Sofia hacia la salida</p>
+                            <button class="btn-secondary" id="mazeRegenerateBtn">🔁 Regenerar</button>
+                            <button class="btn-secondary" id="mazeRestartBtn">↺ Reiniciar</button>
+                            <label style="font-weight:bold;">Dificultad:</label>
+                            <select id="mazeDifficultySelect" style="padding:6px 10px; border-radius:6px; border:2px solid #667eea;">
+                                <option value="easy">Fácil</option>
+                                <option value="medium" selected>Medio</option>
+                                <option value="hard">Difícil</option>
+                            </select>
+                            <div style="margin-left:auto; display:flex; gap:12px; align-items:center;">
+                                <span style="font-weight:bold;">Tiempo:</span> <span id="mazeTimer">00:00</span>
+                                <span style="font-weight:bold;">Pasos:</span> <span id="mazeSteps">0</span>
+                            </div>
+                        </div>
+                    </div>
+                    <canvas id="mazeCanvas" width="800" height="600"></canvas>
+                    <p id="mazeMessage"></p>
+                    <!-- Controles táctiles (se mostrarán en móviles) -->
+                    <div id="mazeTouchControls" class="touch-controls" style="display:flex; justify-content:center; gap:8px; margin-top:10px;">
+                        <div style="display:flex; flex-direction:column; gap:8px; align-items:center;">
+                            <button class="touch-btn" id="mazeUpBtn">▲</button>
+                            <div style="display:flex; gap:8px;">
+                                <button class="touch-btn" id="mazeLeftBtn">◀</button>
+                                <button class="touch-btn" id="mazeDownBtn">▼</button>
+                                <button class="touch-btn" id="mazeRightBtn">▶</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Modal para Preguntas y Respuestas -->
+        <div id="quizModal" class="modal">
+            <div class="modal-content">
+                <span class="close" onclick="closeGame('quiz')">&times;</span>
+                <h2>❓ Preguntas y Respuestas</h2>
+                <div class="quiz-game">
+                    <div class="quiz-header">
+                        <p class="quiz-score">Puntuación: <span id="quizScore">0</span></p>
+                        <p class="quiz-question-number">Pregunta: <span id="quizNumber">1</span>/<span id="quizTotal">10</span></p>
+                        <div style="display:flex; align-items:center; gap:8px; margin-left:10px;">
+                            <label style="font-weight:bold;">Nivel:</label>
+                            <select id="quizDifficultySelect" style="padding:6px 10px; border-radius:6px; border:2px solid #667eea;">
+                                <option value="easy">Fácil</option>
+                                <option value="medium" selected>Medio</option>
+                                <option value="hard">Difícil</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div id="quizContainer" class="quiz-container">
+                        <!-- Las preguntas se cargarán dinámicamente -->
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <p>© 2026 La Aventura de Sara Sofia Lizarazo Garzon - Creado por Miguel Angel Garcia con ❤️ para divertirse y aprender</p>
+        </footer>
+    </div>
+
+    <script src="js/paint-game.js"></script>
+    <script src="js/coloring-game.js"></script>
+    <script src="js/maze-game.js"></script>
+    <script src="js/quiz-game.js"></script>
+    <script src="js/create-story.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>

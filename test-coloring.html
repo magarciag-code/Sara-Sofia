@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prueba - Juego de Colorear</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <div style="max-width: 900px; margin: 0 auto; padding: 20px;">
+        <button onclick="testColoring()" style="padding: 10px 20px; font-size: 16px; cursor: pointer;">
+            Abrir Juego de Colorear
+        </button>
+        
+        <div id="coloringModal" class="modal" style="position: static; background: transparent; margin-top: 20px;">
+            <div class="modal-content">
+                <h2>🦁 Colorear Animales</h2>
+                
+                <!-- Galería de Animales -->
+                <div class="animals-gallery" id="animalsGallery">
+                    <p style="font-weight: bold; margin-bottom: 15px;">📚 Elige un animal para colorear:</p>
+                    <div class="gallery-grid" id="galleryGrid"></div>
+                </div>
+                
+                <div class="coloring-game" id="coloringGame" style="display: none;">
+                    <div class="coloring-controls">
+                        <div>
+                            <label>Color:</label>
+                            <input type="color" id="coloringColor" value="#FF0000">
+                        </div>
+                        <button class="btn-secondary" onclick="resetColoring()">🔄 Reiniciar</button>
+                        <button class="btn-secondary" onclick="downloadColoring()" style="background: #4caf50;">💾 Descargar Dibujo</button>
+                        <button class="btn-secondary" onclick="backToGallery()">◀️ Volver a Galería</button>
+                    </div>
+                    <div style="position: relative;">
+                        <svg id="coloringSvg" viewBox="0 0 800 600" class="coloring-svg">
+                            <!-- Los animales se cargarán dinámicamente -->
+                        </svg>
+                    </div>
+                    <p id="coloringTitle" style="text-align: center; font-weight: bold; margin-top: 10px; color: #f5576c;"></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/coloring-game.js"></script>
+    <script>
+        function testColoring() {
+            initColoringGame();
+        }
+    </script>
+</body>
+</html>

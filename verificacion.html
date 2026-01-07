@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Verificación - Juego Colorear Sara Sofia</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 20px;
+            background: #f0f0f0;
+        }
+        .check {
+            background: white;
+            padding: 20px;
+            margin: 10px 0;
+            border-radius: 10px;
+            border-left: 5px solid;
+        }
+        .check.pass {
+            border-left-color: green;
+        }
+        .check.pass::before {
+            content: "✓ ";
+            color: green;
+            font-weight: bold;
+        }
+        .check.fail {
+            border-left-color: red;
+        }
+        .check.fail::before {
+            content: "✗ ";
+            color: red;
+            font-weight: bold;
+        }
+        h1 {
+            color: #667eea;
+            text-align: center;
+        }
+        code {
+            background: #eee;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-family: monospace;
+        }
+    </style>
+</head>
+<body>
+    <h1>🔍 Verificación del Proyecto - Colorear Animales</h1>
+    
+    <div id="results"></div>
+
+    <script src="js/coloring-game.js"></script>
+    <script>
+        const checks = [];
+
+        // Check 1: Verificar que animals array existe
+        checks.push({
+            name: "Array 'animals' existe y tiene datos",
+            pass: typeof animals !== 'undefined' && Array.isArray(animals) && animals.length > 0,
+            details: `Se encontraron ${animals ? animals.length : 0} animales`
+        });
+
+        // Check 2: Verificar cantidad mínima de animales
+        checks.push({
+            name: "Se tienen al menos 6 animales",
+            pass: animals && animals.length >= 6,
+            details: `Total de animales: ${animals ? animals.length : 0}`
+        });
+
+        // Check 3: Verificar estructura de animales
+        checks.push({
+            name: "Cada animal tiene nombre, emoji y svg",
+            pass: animals && animals.every(a => a.name && a.emoji && a.svg),
+            details: "Todas las propiedades requeridas están presentes"
+        });
+
+        // Check 4: Verificar funciones necesarias
+        const functionNames = ['initColoringGame', 'selectAnimal', 'loadAnimal', 'resetColoring', 'backToGallery', 'downloadColoring'];
+        functionNames.forEach(fname => {
+            checks.push({
+                name: `Función '${fname}' existe`,
+                pass: typeof window[fname] === 'function',
+                details: `${fname} es ${typeof window[fname]}`
+            });
+        });
+
+        // Check 5: Verificar animales específicos
+        const animalNames = ['León', 'Elefante', 'Mariposa', 'Gato', 'Pájaro', 'Pez'];
+        animalNames.forEach(name => {
+            const exists = animals && animals.some(a => a.name === name);
+            checks.push({
+                name: `Animal "${name}" existe`,
+                pass: exists,
+                details: exists ? "✓ Encontrado" : "✗ No encontrado"
+            });
+        });
+
+        // Renderizar resultados
+        const resultsDiv = document.getElementById('results');
+        checks.forEach(check => {
+            const div = document.createElement('div');
+            div.className = `check ${check.pass ? 'pass' : 'fail'}`;
+            div.innerHTML = `<strong>${check.name}</strong><br><small>${check.details}</small>`;
+            resultsDiv.appendChild(div);
+        });
+
+        // Resumen
+        const passedChecks = checks.filter(c => c.pass).length;
+        const totalChecks = checks.length;
+        const summaryDiv = document.createElement('div');
+        summaryDiv.style.marginTop = '30px';
+        summaryDiv.style.padding = '20px';
+        summaryDiv.style.backgroundColor = passedChecks === totalChecks ? '#c8e6c9' : '#ffcccc';
+        summaryDiv.style.borderRadius = '10px';
+        summaryDiv.style.textAlign = 'center';
+        summaryDiv.innerHTML = `
+            <h2>${passedChecks === totalChecks ? '✓ ¡EXCELENTE!' : '✗ PROBLEMAS ENCONTRADOS'}</h2>
+            <p>Verificaciones pasadas: <strong>${passedChecks}/${totalChecks}</strong></p>
+            ${passedChecks === totalChecks ? '<p>El código está listo para usar</p>' : '<p>Por favor, revisa los errores arriba</p>'}
+        `;
+        resultsDiv.appendChild(summaryDiv);
+    </script>
+</body>
+</html>

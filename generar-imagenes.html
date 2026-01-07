@@ -1,0 +1,602 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Generador de Imágenes</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            background: #f0f0f0;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        button {
+            padding: 10px 20px;
+            margin: 10px 5px;
+            cursor: pointer;
+            font-size: 1em;
+            background: #667eea;
+            color: white;
+            border: none;
+            border-radius: 5px;
+        }
+        button:hover {
+            background: #764ba2;
+        }
+        canvas {
+            border: 1px solid #ddd;
+            margin: 10px;
+            background: white;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Generador de Imágenes para Sara Sofia</h1>
+        <p>Haz clic en los botones para generar y descargar las imágenes</p>
+        
+        <button onclick="generateWelcomeImage()">Generar: welcome.png</button>
+        <button onclick="generateAdventureImage()">Generar: adventure.png</button>
+        <button onclick="generatePortalImage()">Generar: portal.png</button>
+        <button onclick="generateEnchantedImage()">Generar: enchanted-kingdom.png</button>
+        <button onclick="generateTreasureImage()">Generar: treasure.png</button>
+        <button onclick="generateHomeReturnImage()">Generar: home-return.png</button>
+        <button onclick="generatePaintGameImage()">Generar: paint-game.png</button>
+        <button onclick="generateColoringGameImage()">Generar: coloring-game.png</button>
+        <button onclick="generateMazeGameImage()">Generar: maze-game.png</button>
+        <button onclick="generateQuizGameImage()">Generar: quiz-game.png</button>
+        
+        <br><br>
+        <button onclick="generateAllImages()" style="background: #4caf50; font-weight: bold;">
+            📦 GENERAR TODAS LAS IMÁGENES
+        </button>
+        
+        <canvas id="canvas" width="800" height="600"></canvas>
+    </div>
+
+    <script>
+        const canvas = document.getElementById('canvas');
+        const ctx = canvas.getContext('2d');
+
+        function downloadCanvas(filename) {
+            const link = document.createElement('a');
+            link.download = filename;
+            link.href = canvas.toDataURL();
+            link.click();
+        }
+
+        function generateWelcomeImage() {
+            ctx.fillStyle = '#87CEEB';
+            ctx.fillRect(0, 0, 800, 600);
+            
+            // Texto de bienvenida
+            ctx.fillStyle = '#FF69B4';
+            ctx.font = 'bold 60px Arial';
+            ctx.textAlign = 'center';
+            ctx.fillText('¡Bienvenida!', 400, 100);
+            
+            // Decoración
+            ctx.fillStyle = '#FFD700';
+            ctx.beginPath();
+            ctx.arc(100, 100, 40, 0, Math.PI * 2);
+            ctx.fill();
+            
+            // Carita feliz
+            ctx.fillStyle = '#333';
+            ctx.beginPath();
+            ctx.arc(80, 80, 8, 0, Math.PI * 2);
+            ctx.fill();
+            ctx.beginPath();
+            ctx.arc(120, 80, 8, 0, Math.PI * 2);
+            ctx.fill();
+            ctx.strokeStyle = '#333';
+            ctx.lineWidth = 3;
+            ctx.beginPath();
+            ctx.arc(100, 110, 15, 0, Math.PI);
+            ctx.stroke();
+            
+            // Corazones
+            drawHeart(700, 100, 30, '#FF1493');
+            drawHeart(650, 150, 25, '#FF69B4');
+            
+            ctx.fillStyle = '#90EE90';
+            ctx.fillRect(0, 400, 800, 200);
+            
+            ctx.fillStyle = '#228B22';
+            ctx.beginPath();
+            ctx.arc(200, 350, 50, 0, Math.PI * 2);
+            ctx.fill();
+            
+            ctx.fillStyle = '#8B4513';
+            ctx.fillRect(180, 400, 40, 100);
+            
+            ctx.fillStyle = '#FF00FF';
+            ctx.font = 'bold 40px Arial';
+            ctx.fillText('¡Diviértete!', 400, 350);
+            
+            downloadCanvas('welcome.png');
+        }
+
+        function generateAdventureImage() {
+            ctx.fillStyle = '#667eea';
+            ctx.fillRect(0, 0, 800, 600);
+            
+            ctx.fillStyle = '#764ba2';
+            ctx.fillRect(0, 400, 800, 200);
+            
+            ctx.fillStyle = '#FFD700';
+            ctx.beginPath();
+            ctx.arc(700, 100, 50, 0, Math.PI * 2);
+            ctx.fill();
+            
+            // Montañas
+            ctx.fillStyle = '#8B7355';
+            ctx.beginPath();
+            ctx.moveTo(0, 350);
+            ctx.lineTo(150, 200);
+            ctx.lineTo(300, 350);
+            ctx.fill();
+            
+            ctx.beginPath();
+            ctx.moveTo(300, 350);
+            ctx.lineTo(500, 150);
+            ctx.lineTo(700, 350);
+            ctx.fill();
+            
+            // Título
+            ctx.fillStyle = 'white';
+            ctx.font = 'bold 70px Arial';
+            ctx.textAlign = 'center';
+            ctx.fillText('AVENTURA', 400, 100);
+            
+            ctx.font = 'bold 40px Arial';
+            ctx.fillStyle = '#FFD700';
+            ctx.fillText('Mágica', 400, 160);
+            
+            downloadCanvas('adventure.png');
+        }
+
+        function generatePortalImage() {
+            ctx.fillStyle = '#1a0033';
+            ctx.fillRect(0, 0, 800, 600);
+            
+            // Estrellas
+            ctx.fillStyle = 'white';
+            for (let i = 0; i < 100; i++) {
+                const x = Math.random() * 800;
+                const y = Math.random() * 300;
+                const size = Math.random() * 2;
+                ctx.fillRect(x, y, size, size);
+            }
+            
+            // Portal circular
+            ctx.strokeStyle = '#00FF00';
+            ctx.lineWidth = 10;
+            ctx.beginPath();
+            ctx.arc(400, 300, 150, 0, Math.PI * 2);
+            ctx.stroke();
+            
+            ctx.strokeStyle = '#FF00FF';
+            ctx.lineWidth = 5;
+            ctx.beginPath();
+            ctx.arc(400, 300, 140, 0, Math.PI * 2);
+            ctx.stroke();
+            
+            ctx.fillStyle = '#00FF00';
+            ctx.globalAlpha = 0.3;
+            ctx.beginPath();
+            ctx.arc(400, 300, 130, 0, Math.PI * 2);
+            ctx.fill();
+            ctx.globalAlpha = 1;
+            
+            ctx.fillStyle = '#00FF00';
+            ctx.font = 'bold 50px Arial';
+            ctx.textAlign = 'center';
+            ctx.fillText('✨ Portal Mágico ✨', 400, 550);
+            
+            downloadCanvas('portal.png');
+        }
+
+        function generateEnchantedImage() {
+            ctx.fillStyle = '#87CEEB';
+            ctx.fillRect(0, 0, 800, 600);
+            
+            // Nubes
+            drawCloud(100, 80, 50, '#FFF');
+            drawCloud(600, 120, 60, '#FFF');
+            
+            // Árboles
+            drawTree(100, 350, 40);
+            drawTree(700, 350, 50);
+            
+            // Flores
+            drawFlower(200, 380, '#FF1493');
+            drawFlower(300, 400, '#FF69B4');
+            drawFlower(500, 390, '#FFB6C1');
+            
+            // Mariposa
+            ctx.fillStyle = '#FFD700';
+            ctx.beginPath();
+            ctx.arc(400, 200, 30, 0, Math.PI * 2);
+            ctx.fill();
+            
+            ctx.fillStyle = '#FFA500';
+            ctx.beginPath();
+            ctx.ellipse(350, 150, 40, 50, -0.3, 0, Math.PI * 2);
+            ctx.fill();
+            ctx.beginPath();
+            ctx.ellipse(450, 150, 40, 50, 0.3, 0, Math.PI * 2);
+            ctx.fill();
+            
+            // Castillo
+            drawCastle(400, 250, 150);
+            
+            ctx.fillStyle = '#228B22';
+            ctx.fillRect(0, 450, 800, 150);
+            
+            ctx.fillStyle = '#FFD700';
+            ctx.font = 'bold 50px Arial';
+            ctx.textAlign = 'center';
+            ctx.fillText('Reino Encantado', 400, 550);
+            
+            downloadCanvas('enchanted-kingdom.png');
+        }
+
+        function generateTreasureImage() {
+            ctx.fillStyle = '#8B4513';
+            ctx.fillRect(0, 0, 800, 600);
+            
+            ctx.fillStyle = '#D2B48C';
+            ctx.fillRect(100, 200, 600, 250);
+            
+            // Baúl de tesoro
+            ctx.fillStyle = '#8B4513';
+            ctx.fillRect(250, 250, 300, 150);
+            
+            ctx.fillStyle = '#FFD700';
+            ctx.beginPath();
+            ctx.arc(400, 250, 80, Math.PI, 0);
+            ctx.fill();
+            
+            // Monedas
+            ctx.fillStyle = '#FFD700';
+            for (let i = 0; i < 15; i++) {
+                const x = 300 + Math.random() * 200;
+                const y = 300 + Math.random() * 100;
+                ctx.beginPath();
+                ctx.arc(x, y, 15, 0, Math.PI * 2);
+                ctx.fill();
+                ctx.strokeStyle = '#FF8C00';
+                ctx.lineWidth = 2;
+                ctx.stroke();
+            }
+            
+            // Joyería
+            ctx.fillStyle = '#FF1493';
+            for (let i = 0; i < 8; i++) {
+                const x = 320 + Math.random() * 160;
+                const y = 280 + Math.random() * 80;
+                ctx.beginPath();
+                ctx.arc(x, y, 8, 0, Math.PI * 2);
+                ctx.fill();
+            }
+            
+            ctx.fillStyle = '#FFD700';
+            ctx.font = 'bold 60px Arial';
+            ctx.textAlign = 'center';
+            ctx.fillText('💎 Tesoro 💎', 400, 100);
+            
+            downloadCanvas('treasure.png');
+        }
+
+        function generateHomeReturnImage() {
+            ctx.fillStyle = '#87CEEB';
+            ctx.fillRect(0, 0, 800, 600);
+            
+            // Casa
+            ctx.fillStyle = '#D2691E';
+            ctx.fillRect(250, 250, 300, 200);
+            
+            // Techo
+            ctx.fillStyle = '#8B4513';
+            ctx.beginPath();
+            ctx.moveTo(250, 250);
+            ctx.lineTo(400, 150);
+            ctx.lineTo(550, 250);
+            ctx.fill();
+            
+            // Puerta
+            ctx.fillStyle = '#654321';
+            ctx.fillRect(360, 350, 80, 100);
+            ctx.fillStyle = '#FFD700';
+            ctx.beginPath();
+            ctx.arc(440, 400, 8, 0, Math.PI * 2);
+            ctx.fill();
+            
+            // Ventanas
+            ctx.fillStyle = '#87CEEB';
+            ctx.fillRect(280, 280, 50, 50);
+            ctx.fillRect(470, 280, 50, 50);
+            
+            ctx.fillStyle = '#FFD700';
+            ctx.font = 'bold 60px Arial';
+            ctx.textAlign = 'center';
+            ctx.fillText('🏠 Hogar', 400, 80);
+            
+            ctx.fillStyle = '#FF69B4';
+            ctx.font = 'bold 40px Arial';
+            ctx.fillText('Dulce Hogar', 400, 540);
+            
+            downloadCanvas('home-return.png');
+        }
+
+        function generatePaintGameImage() {
+            ctx.fillStyle = '#FFE4E1';
+            ctx.fillRect(0, 0, 800, 600);
+            
+            ctx.fillStyle = '#FF1493';
+            ctx.font = 'bold 80px Arial';
+            ctx.textAlign = 'center';
+            ctx.fillText('🎨', 400, 150);
+            
+            // Pincel
+            ctx.fillStyle = '#8B4513';
+            ctx.fillRect(200, 250, 30, 100);
+            
+            ctx.fillStyle = '#FF0000';
+            ctx.fillRect(190, 200, 50, 50);
+            
+            // Paleta
+            ctx.fillStyle = '#FFE4B5';
+            ctx.beginPath();
+            ctx.ellipse(600, 300, 80, 60, 0, 0, Math.PI * 2);
+            ctx.fill();
+            
+            ctx.fillStyle = '#FF0000';
+            ctx.beginPath();
+            ctx.arc(560, 270, 20, 0, Math.PI * 2);
+            ctx.fill();
+            
+            ctx.fillStyle = '#0000FF';
+            ctx.beginPath();
+            ctx.arc(620, 270, 20, 0, Math.PI * 2);
+            ctx.fill();
+            
+            ctx.fillStyle = '#FFFF00';
+            ctx.beginPath();
+            ctx.arc(560, 330, 20, 0, Math.PI * 2);
+            ctx.fill();
+            
+            ctx.fillStyle = '#00FF00';
+            ctx.beginPath();
+            ctx.arc(620, 330, 20, 0, Math.PI * 2);
+            ctx.fill();
+            
+            ctx.fillStyle = '#FF69B4';
+            ctx.font = 'bold 40px Arial';
+            ctx.fillText('Pintar y Dibujar', 400, 500);
+            
+            downloadCanvas('paint-game.png');
+        }
+
+        function generateColoringGameImage() {
+            ctx.fillStyle = '#FFE4E1';
+            ctx.fillRect(0, 0, 800, 600);
+            
+            // León (simple)
+            ctx.fillStyle = '#FF8C00';
+            ctx.beginPath();
+            ctx.arc(300, 250, 60, 0, Math.PI * 2);
+            ctx.fill();
+            
+            ctx.fillStyle = '#FFA500';
+            ctx.beginPath();
+            ctx.arc(300, 250, 80, 0, Math.PI * 2);
+            ctx.fill();
+            
+            ctx.fillStyle = '#000';
+            ctx.beginPath();
+            ctx.arc(280, 230, 8, 0, Math.PI * 2);
+            ctx.fill();
+            ctx.beginPath();
+            ctx.arc(320, 230, 8, 0, Math.PI * 2);
+            ctx.fill();
+            
+            // Panda
+            ctx.fillStyle = '#FFF';
+            ctx.beginPath();
+            ctx.arc(550, 250, 50, 0, Math.PI * 2);
+            ctx.fill();
+            
+            ctx.fillStyle = '#000';
+            ctx.beginPath();
+            ctx.arc(530, 230, 12, 0, Math.PI * 2);
+            ctx.fill();
+            ctx.beginPath();
+            ctx.arc(570, 230, 12, 0, Math.PI * 2);
+            ctx.fill();
+            ctx.beginPath();
+            ctx.arc(550, 260, 8, 0, Math.PI * 2);
+            ctx.fill();
+            
+            ctx.fillStyle = '#FF69B4';
+            ctx.font = 'bold 40px Arial';
+            ctx.textAlign = 'center';
+            ctx.fillText('Colorear Animales', 400, 500);
+            
+            downloadCanvas('coloring-game.png');
+        }
+
+        function generateMazeGameImage() {
+            ctx.fillStyle = '#FFE4E1';
+            ctx.fillRect(0, 0, 800, 600);
+            
+            // Laberinto simple
+            ctx.strokeStyle = '#333';
+            ctx.lineWidth = 3;
+            
+            // Marco
+            ctx.strokeRect(100, 100, 600, 350);
+            
+            // Paredes
+            ctx.beginPath();
+            ctx.moveTo(250, 100);
+            ctx.lineTo(250, 250);
+            ctx.stroke();
+            
+            ctx.beginPath();
+            ctx.moveTo(100, 200);
+            ctx.lineTo(400, 200);
+            ctx.stroke();
+            
+            ctx.beginPath();
+            ctx.moveTo(500, 100);
+            ctx.lineTo(500, 300);
+            ctx.stroke();
+            
+            // Entrada
+            ctx.fillStyle = '#FF69B4';
+            ctx.beginPath();
+            ctx.arc(120, 150, 15, 0, Math.PI * 2);
+            ctx.fill();
+            
+            // Salida
+            ctx.fillStyle = '#FFD700';
+            ctx.fillRect(680, 420, 30, 30);
+            ctx.fillStyle = '#333';
+            ctx.font = 'bold 20px Arial';
+            ctx.fillText('🎯', 687, 435);
+            
+            ctx.fillStyle = '#FF69B4';
+            ctx.font = 'bold 40px Arial';
+            ctx.textAlign = 'center';
+            ctx.fillText('Laberinto', 400, 520);
+            
+            downloadCanvas('maze-game.png');
+        }
+
+        function generateQuizGameImage() {
+            ctx.fillStyle = '#FFE4E1';
+            ctx.fillRect(0, 0, 800, 600);
+            
+            ctx.fillStyle = '#FF69B4';
+            ctx.font = 'bold 100px Arial';
+            ctx.textAlign = 'center';
+            ctx.fillText('?', 400, 150);
+            
+            // Opciones
+            ctx.fillStyle = '#667eea';
+            ctx.fillRect(100, 200, 200, 80);
+            ctx.fillRect(500, 200, 200, 80);
+            ctx.fillRect(100, 310, 200, 80);
+            ctx.fillRect(500, 310, 200, 80);
+            
+            ctx.fillStyle = 'white';
+            ctx.font = 'bold 24px Arial';
+            ctx.textAlign = 'center';
+            ctx.fillText('A', 200, 250);
+            ctx.fillText('B', 600, 250);
+            ctx.fillText('C', 200, 360);
+            ctx.fillText('D', 600, 360);
+            
+            ctx.fillStyle = '#FF69B4';
+            ctx.font = 'bold 40px Arial';
+            ctx.fillText('Preguntas', 400, 520);
+            
+            downloadCanvas('quiz-game.png');
+        }
+
+        function drawHeart(x, y, size, color) {
+            ctx.fillStyle = color;
+            ctx.beginPath();
+            ctx.moveTo(x, y + size / 2);
+            ctx.bezierCurveTo(x - size, y - size / 2, x - size * 1.5, y + size / 2, x, y + size * 1.5);
+            ctx.bezierCurveTo(x + size * 1.5, y + size / 2, x + size, y - size / 2, x, y + size / 2);
+            ctx.fill();
+        }
+
+        function drawCloud(x, y, size, color) {
+            ctx.fillStyle = color;
+            ctx.beginPath();
+            ctx.arc(x - size / 2, y, size / 2, 0, Math.PI * 2);
+            ctx.arc(x, y, size / 2, 0, Math.PI * 2);
+            ctx.arc(x + size / 2, y, size / 2, 0, Math.PI * 2);
+            ctx.fill();
+        }
+
+        function drawTree(x, y, size) {
+            // Tronco
+            ctx.fillStyle = '#8B4513';
+            ctx.fillRect(x - size / 4, y, size / 2, size);
+            // Copa
+            ctx.fillStyle = '#228B22';
+            ctx.beginPath();
+            ctx.arc(x, y - size / 2, size * 0.8, 0, Math.PI * 2);
+            ctx.fill();
+        }
+
+        function drawFlower(x, y, color) {
+            ctx.fillStyle = color;
+            // Pétalos
+            for (let i = 0; i < 5; i++) {
+                const angle = (i * Math.PI * 2) / 5;
+                const px = x + 15 * Math.cos(angle);
+                const py = y + 15 * Math.sin(angle);
+                ctx.beginPath();
+                ctx.arc(px, py, 8, 0, Math.PI * 2);
+                ctx.fill();
+            }
+            // Centro
+            ctx.fillStyle = '#FFFF00';
+            ctx.beginPath();
+            ctx.arc(x, y, 6, 0, Math.PI * 2);
+            ctx.fill();
+            // Tallo
+            ctx.strokeStyle = '#228B22';
+            ctx.lineWidth = 3;
+            ctx.beginPath();
+            ctx.moveTo(x, y);
+            ctx.lineTo(x, y + 40);
+            ctx.stroke();
+        }
+
+        function drawCastle(x, y, size) {
+            // Muralla
+            ctx.fillStyle = '#8B4513';
+            ctx.fillRect(x - size, y, size * 2, size * 0.8);
+            // Torres
+            ctx.fillRect(x - size - size / 4, y - size / 4, size / 2, size);
+            ctx.fillRect(x + size, y - size / 4, size / 2, size);
+            // Puerta
+            ctx.fillStyle = '#654321';
+            ctx.fillRect(x - size / 4, y + size * 0.4, size / 2, size * 0.4);
+        }
+
+        async function generateAllImages() {
+            const images = [
+                { name: 'Bienvenida', func: generateWelcomeImage },
+                { name: 'Aventura', func: generateAdventureImage },
+                { name: 'Portal', func: generatePortalImage },
+                { name: 'Reino Encantado', func: generateEnchantedImage },
+                { name: 'Tesoro', func: generateTreasureImage },
+                { name: 'Regreso a Casa', func: generateHomeReturnImage },
+                { name: 'Juego Pintar', func: generatePaintGameImage },
+                { name: 'Juego Colorear', func: generateColoringGameImage },
+                { name: 'Juego Laberinto', func: generateMazeGameImage },
+                { name: 'Juego Preguntas', func: generateQuizGameImage }
+            ];
+            
+            for (const image of images) {
+                console.log(`Generando ${image.name}...`);
+                image.func();
+                await new Promise(r => setTimeout(r, 500));
+            }
+            
+            alert('¡Todas las imágenes han sido generadas y descargadas!');
+        }
+    </script>
+</body>
+</html>
